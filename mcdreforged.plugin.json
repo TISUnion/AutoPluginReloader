@@ -4,7 +4,7 @@
     "name": "Auto Plugin Reloader",
     "description": {
         "en_us": "Automatically reload plugins when file changes",
-        "zh_ch": "在文件变更时自动重载插件"
+        "zh_cn": "在文件变更时自动重载插件"
     },
     "author": [
         "Fallen_Breath"
