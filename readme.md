@@ -5,7 +5,7 @@ Auto Plugin Reloader
 
 A [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) (>=2.x) plugin
 
-Automatically trigger plugin reloading when any plugin file (files with extension `.py` and `.mcdr` in plugin directories) changes
+Automatically trigger plugin reloading when any plugin file (files with extension `.py` and `.mcdr`) in MCDR plugin directories changes
 
 ## Config
 

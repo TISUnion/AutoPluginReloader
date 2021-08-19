@@ -5,7 +5,7 @@ Auto Plugin Reloader
 
 一个 [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) (>=2.x) 插件
 
-在任何插件文件变更时（插件文件夹中，后缀为 `.py` 或 `.mcdr` 的文件），触发一次插件重载
+在 MCDR 插件文件夹中任何插件文件变更时（后缀为 `.py` 或 `.mcdr` 的文件），触发一次插件重载
 
 ## 配置
 
