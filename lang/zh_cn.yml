@@ -1,0 +1,20 @@
+auto_plugin_reloader.help_message: |
+  ---- {name} v{version} ----
+  §7{prefix}§r: 显示帮助信息
+  §7{prefix} status§r: 显示运行状态
+  §7{prefix} enable§r: 启动插件自动重载器
+  §7{prefix} disable§r: 关闭插件自动重载器
+  §7{prefix} set_interval §6<interval_sec>§r: 设置检测间隔，单位：秒
+auto_plugin_reloader.permission_denied: 权限不足
+auto_plugin_reloader.set_enable.false: 已关闭插件自动重载器
+auto_plugin_reloader.set_enable.true: 已启动插件自动重载器
+auto_plugin_reloader.set_interval: '已将检测间隔设置为{0}秒'
+auto_plugin_reloader.triggered.header: '检测到文件变更：'
+auto_plugin_reloader.file_added: 新增
+auto_plugin_reloader.file_modified: 变更
+auto_plugin_reloader.file_deleted: 移除
+auto_plugin_reloader.seconds_later: '{0}秒后'
+auto_plugin_reloader.triggered.footer: 触发插件重载
+auto_plugin_reloader.status.0: '运行中: {0}'
+auto_plugin_reloader.status.1: '下次检测时间: {0}'
+auto_plugin_reloader.status.2: '检测黑名单 (共{0}个): '

@@ -1,0 +1,20 @@
+auto_plugin_reloader.help_message: |
+  ---- {name} v{version} ----
+  §7{prefix}§r: Display help message
+  §7{prefix} status§r: Display the status of the reloader
+  §7{prefix} enable§r: Enabled the reloader
+  §7{prefix} disable§r: Disabled the reloader
+  §7{prefix} set_interval §6<interval_sec>§r: Set the detection interval, unit: seconds
+auto_plugin_reloader.permission_denied: Permission denied
+auto_plugin_reloader.set_enable.false: Disabled auto plugin reloader
+auto_plugin_reloader.set_enable.true: Enabled auto plugin reloader
+auto_plugin_reloader.set_interval: 'Set the detection interval to {0} seconds'
+auto_plugin_reloader.triggered.header: 'File changes detected:'
+auto_plugin_reloader.file_added: added
+auto_plugin_reloader.file_modified: modified
+auto_plugin_reloader.file_deleted: removed
+auto_plugin_reloader.seconds_later: '{0}s later'
+auto_plugin_reloader.triggered.footer: Trigger plugin reload
+auto_plugin_reloader.status.0: 'Running: {0}'
+auto_plugin_reloader.status.1: 'Next detection time: {0}'
+auto_plugin_reloader.status.2: 'Detection blacklist ({0}x items): '
