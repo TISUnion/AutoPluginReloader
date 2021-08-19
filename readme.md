@@ -15,7 +15,7 @@ Configure file: `config/auto_plugin_reloader/config.json`
 
 `permission`, the minimum permission level to use the command, default: `4`
 
-`detection_interval_sec`, the time interval between file change detections in seconds, default: `20`
+`detection_interval_sec`, the time interval between file change detections in seconds, default: `10`
 
 `reload_delay_sec`, the time delay after file changes detected and before plugin reload gets triggered in seconds, default: `1`
 

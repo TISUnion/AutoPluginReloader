@@ -9,7 +9,7 @@ from auto_plugin_reloader import common
 class Configure(Serializable):
 	enabled: bool = True
 	permission: int = PermissionLevel.PHYSICAL_SERVER_CONTROL_LEVEL
-	detection_interval_sec: float = 20
+	detection_interval_sec: float = 10
 	reload_delay_sec: float = 1
 	blacklist: List[str] = []
 

@@ -15,7 +15,7 @@ Auto Plugin Reloader
 
 `permission`：执行指令所需要的最小权限等级，默认值：`4`
 
-`detection_interval_sec`：文件变化检测间的时间间隔，单位秒，默认值：`20`
+`detection_interval_sec`：文件变化检测间的时间间隔，单位秒，默认值：`10`
 
 `reload_delay_sec`：检测到文件变化后，触发插件重载前的延迟，单位秒，默认值：`1`
 
