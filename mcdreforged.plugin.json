@@ -10,6 +10,9 @@
         "Fallen_Breath"
     ],
     "link": "https://github.com/TISUnion/AutoPluginReloader",
+    "dependencies": {
+        "mcdreforged": ">=2.0.1"
+    },
     "entrypoint": "auto_plugin_reloader.entry",
     "resources": [
         "lang",

@@ -120,6 +120,6 @@ class PluginReloader:
 			for diff in diffs:
 				self.logger.info('- {}: {}'.format(diff.file_path, diff.reason))
 			self.logger.info(tr('triggered.footer'))
-			server_inst.refresh_changed_plugins()
+			server_inst.schedule_task(server_inst.refresh_changed_plugins, block=True)
 
 		self.scan_result = new_scan_result
