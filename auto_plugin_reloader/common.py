@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 
+from mcdreforged.api.rtext import RTextMCDRTranslation
 from mcdreforged.api.types import ServerInterface
 
 if TYPE_CHECKING:
@@ -13,8 +14,8 @@ config: 'Configure'
 reloader: 'PluginReloader'
 
 
-def tr(key: str, *args, **kwargs):
-	return server_inst.tr('{}.{}'.format(metadata.id, key), *args, **kwargs)
+def tr(key: str, *args, **kwargs) -> RTextMCDRTranslation:
+	return server_inst.rtr('{}.{}'.format(metadata.id, key), *args, **kwargs)
 
 
 def load_common():
