@@ -14,7 +14,7 @@ PLUGIN_FILE_SUFFIXES = ['.py', '.mcdr']
 
 class Difference(NamedTuple):
 	file_path: str
-	reason: str
+	reason: RTextBase
 
 
 class PluginReloader:
@@ -120,6 +120,5 @@ class PluginReloader:
 			for diff in diffs:
 				self.logger.info('- {}: {}'.format(diff.file_path, diff.reason))
 			self.logger.info(tr('triggered.footer'))
+			self.scan_result = self.scan_files()
 			server_inst.schedule_task(server_inst.refresh_changed_plugins, block=True)
-
-		self.scan_result = new_scan_result
