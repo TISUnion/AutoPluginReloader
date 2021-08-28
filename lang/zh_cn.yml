@@ -9,7 +9,7 @@ auto_plugin_reloader.permission_denied: 权限不足
 auto_plugin_reloader.set_enable.false: 已关闭插件自动重载器
 auto_plugin_reloader.set_enable.true: 已启动插件自动重载器
 auto_plugin_reloader.set_interval: '已将检测间隔设置为{0}秒'
-auto_plugin_reloader.triggered.header: '检测到文件变更：'
+auto_plugin_reloader.triggered.header: '检测到文件变更:'
 auto_plugin_reloader.file_added: 新增
 auto_plugin_reloader.file_modified: 变更
 auto_plugin_reloader.file_deleted: 移除
