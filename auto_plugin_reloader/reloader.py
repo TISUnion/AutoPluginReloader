@@ -23,7 +23,7 @@ class PluginReloader:
 		self.last_detection_time = 0
 		self.logger = server_inst.logger
 		self.scan_result: ModifyTimeMapping = self.scan_files()
-		self.thread = None  # type: Optional[Thread]
+		self.__thread = None  # type: Optional[Thread]
 		self.__start_stop_lock = Lock()
 
 	def on_config_changed(self):
@@ -33,27 +33,25 @@ class PluginReloader:
 			self.stop()
 
 	def is_running(self):
-		return self.thread is not None
+		return self.__thread is not None and self.__thread.is_alive()
 
 	def start(self):
 		with self.__start_stop_lock:
 			if not self.is_running():
 				self.__stop_flag = False
 				self.reset_detection_time()
-				self.thread = Thread(name=metadata.name, target=self.thread_loop)
-				self.thread.start()
+				self.__thread = Thread(name=metadata.name, target=self.thread_loop)
+				self.__thread.start()
 
 	def join_thread(self):
 		with self.__start_stop_lock:
-			thread = self.thread
+			thread = self.__thread
 		if thread is not None:
 			thread.join()
 
 	def stop(self):
 		with self.__start_stop_lock:
 			self.__stop_flag = True
-			if self.is_running():
-				self.thread = None
 
 	# ------------------
 	#   Implementation
