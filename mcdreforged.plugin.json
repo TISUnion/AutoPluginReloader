@@ -1,6 +1,6 @@
 {
     "id": "auto_plugin_reloader",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "name": "Auto Plugin Reloader",
     "description": {
         "en_us": "Automatically reload plugins when file changes",
