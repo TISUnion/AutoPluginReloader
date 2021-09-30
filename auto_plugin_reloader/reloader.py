@@ -9,7 +9,7 @@ from auto_plugin_reloader import common
 from auto_plugin_reloader.common import tr, metadata, server_inst
 
 ModifyTimeMapping = Dict[str, int]
-PLUGIN_FILE_SUFFIXES = ['.py', '.mcdr']
+PLUGIN_FILE_SUFFIXES = ['.py', '.mcdr', '.pyz']
 
 
 class Difference(NamedTuple):
@@ -32,6 +32,14 @@ class PluginReloader:
 		else:
 			self.stop()
 
+	@property
+	def unique_hex(self) -> str:
+		return hex((id(self) >> 16) & (id(self) & 0xFFFF))[2:].rjust(4, '0')
+
+	@property
+	def unique_name(self) -> str:
+		return '{} @ {}'.format(metadata.name, self.unique_hex)
+
 	def is_running(self):
 		return self.__thread is not None and self.__thread.is_alive()
 
@@ -40,7 +48,7 @@ class PluginReloader:
 			if not self.is_running():
 				self.__stop_flag = False
 				self.reset_detection_time()
-				self.__thread = Thread(name=metadata.name, target=self.thread_loop)
+				self.__thread = Thread(name='APR@{}'.format(self.unique_hex), target=self.thread_loop)
 				self.__thread.start()
 
 	def join_thread(self):
@@ -66,8 +74,7 @@ class PluginReloader:
 		return RText.format('{} ({})', time_text, tr('seconds_later', RText(round(time_next - time.time(), 1), RColor.gold)))
 
 	def thread_loop(self):
-		unique_name = '{} @ {}'.format(metadata.name, hex((id(self) >> 16) & (id(self) & 0xFFFF))[2:].rjust(4, '0'))
-		self.logger.info('{} started'.format(unique_name))
+		self.logger.info('{} started'.format(self.unique_name))
 		while not self.__stop_flag:
 			while not self.__stop_flag and time.time() - self.last_detection_time < common.config.detection_interval_sec:
 				time.sleep(0.005)
@@ -80,7 +87,7 @@ class PluginReloader:
 				self.stop()
 			finally:
 				self.reset_detection_time()
-		self.logger.info('{} stopped'.format(unique_name))
+		self.logger.info('{} stopped'.format(self.unique_name))
 
 	@staticmethod
 	def scan_files() -> ModifyTimeMapping:
@@ -119,4 +126,8 @@ class PluginReloader:
 				self.logger.info('- {}: {}'.format(diff.file_path, diff.reason))
 			self.logger.info(tr('triggered.footer'))
 			self.scan_result = self.scan_files()
-			server_inst.schedule_task(server_inst.refresh_changed_plugins, block=True)
+
+			holder = Thread(name='OperationHolder', daemon=True, target=lambda: server_inst.schedule_task(server_inst.refresh_changed_plugins, block=True))
+			holder.start()
+			while holder.is_alive() and not self.__stop_flag:  # stop waiting after being stopped
+				holder.join(timeout=0.01)
