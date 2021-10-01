@@ -51,7 +51,6 @@ def register(server: PluginServerInterface):
 def on_load(server: PluginServerInterface, old):
     common.load_common()
     common.reloader.on_config_changed()
-    common.reloader.start()
     register(server)
 
 
