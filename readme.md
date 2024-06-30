@@ -3,13 +3,13 @@
 Auto Plugin Reloader
 -----
 
-A [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) (>=2.x) plugin
+A [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) (>=2.13.0) plugin
 
 Automatically trigger plugin reloading when any plugin file (files with extension `.py` and `.mcdr`) in MCDR plugin directories changes
 
 ## Config
 
-Configure file: `config/auto_plugin_reloader/config.json`
+Configuration file: `config/auto_plugin_reloader/config.json`
 
 `enabled`, if the reloader is enabled, default: `true`
 

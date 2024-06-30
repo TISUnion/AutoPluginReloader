@@ -6,7 +6,7 @@ from mcdreforged.api.utils import Serializable
 from auto_plugin_reloader import common
 
 
-class Configure(Serializable):
+class Configuration(Serializable):
 	enabled: bool = True
 	permission: int = PermissionLevel.PHYSICAL_SERVER_CONTROL_LEVEL
 	detection_interval_sec: float = 10
@@ -18,7 +18,7 @@ class Configure(Serializable):
 		return common.server_inst
 
 	@classmethod
-	def load(cls) -> 'Configure':
+	def load(cls) -> 'Configuration':
 		return cls.get_psi().load_config_simple(target_class=cls)
 
 	def save(self):
