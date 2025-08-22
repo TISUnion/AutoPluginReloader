@@ -199,8 +199,6 @@ class PluginReloader:
 				cor.diffs.append(Difference(path, DiffReason.file_added, None))
 				cor.to_load.append(path)
 
-		if (cd_len := len(cor.diffs)) > 0:
-			self.logger.info('Found {} plugin file changes'.format(cd_len))
 		return cor
 
 	def __check_and_reload_once(self):
@@ -209,6 +207,7 @@ class PluginReloader:
 		if len(check_result.diffs) == 0:
 			self.scan_result = check_result.scan_result
 			return
+		self.logger.info('Found {} plugin file changes'.format(len(check_result.diffs)))
 
 		# wait for a while before the double check
 		if self.__stop_flag.wait(common.config.reload_delay_sec):
@@ -218,7 +217,7 @@ class PluginReloader:
 		check_result = self.__scan_and_check()
 		self.scan_result = check_result.scan_result
 		if len(check_result.diffs) == 0:
-			self.logger.info('no diff in second check')
+			self.logger.info('Got no diff in second check')
 			return
 
 		self.logger.info(tr('triggered.header'))
